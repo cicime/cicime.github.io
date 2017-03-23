@@ -33,6 +33,7 @@
       diarys(){
         this.$nextTick(() => {
           // http://www.dowebok.com/134.html
+
           new scrollReveal({reset: true});
         })
       }
