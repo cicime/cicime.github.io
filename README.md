@@ -1,3 +1,3 @@
 # cicime.github.io
 
-> cicime BLOG
+> My BLOG
