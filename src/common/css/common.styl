@@ -1,0 +1,59 @@
+
+// 界面
+body
+  font 14px/1.4 'Microsoft YaHei', PingFang SC, STHeitiSC-Light, Microsoft JhengHei UI, Helvetica, Arial, sans-serif
+  color #333
+  background #f5f5f5
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+
+.container
+  width 780px
+  margin 0 auto
+  padding: 50px 0 0 0
+
+
+@media (max-width: 480px)
+  ::-webkit-scrollbar
+    display none
+  ::-webkit-scrollbar-thumb:vertical
+    display none
+
+  .container
+    width 100%
+    padding 5px
+    box-sizing border-box
+  .content
+    width 100%
+    min-height 720px
+    box-sizing border-box
+
+  .aside
+    display none
+  .pro
+    margin-bottom: 0
+    &:hover,
+    &:active
+      background: transparent
+      box-shadow none
+  .pro-thumb
+     height 160px
+  .pro-desc
+    display: none
+
+  .about-head
+    .avatar
+      display: block
+      margin 0 auto
+  .about-head-list
+    margin 0
+
+  .mobile-nav
+    display flex
+
+  .list-item
+    .time
+       display block
+       margin-left 0
+
+  .md h1
+    padding: 0 0 10px 15px;
