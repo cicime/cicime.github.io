@@ -73,14 +73,13 @@
     margin-bottom: 20px
     cursor pointer
     padding: 5px
-    transition background .2s linear
-    transition box-shadow .2s linear
+    transition all .2s linear
     z-index: 5
     border-radius 3px
 
     &:hover
       background: #fff
-      box-shadow 0 6px 8px rgba(0, 0, 0, .08)
+      box-shadow 0 6px 12px rgba(0, 0, 0, .08)
     &-thumb
       width: 100%
       height: 246px
