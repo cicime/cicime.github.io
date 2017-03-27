@@ -21,7 +21,6 @@
           <router-view class="content" :diarys="diarys"></router-view>
       </transition>
     </div>
-    <v-footer></v-footer>
   </div>
 </template>
 
@@ -65,7 +64,6 @@
 
   .content
     width 640px
-    min-height 1020px
     float right
     margin-bottom: 60px
 
