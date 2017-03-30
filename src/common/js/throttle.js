@@ -1,4 +1,3 @@
-
 /*
  * 频率控制 返回函数连续调用时，fn 执行频率限定为每多少时间执行一次
  * @param fn {function}  需要调用的函数
@@ -69,11 +68,11 @@ const v_throttle = function (fn, ctx, arg) {
  * @param ctx 上下文
  * @param arg 参数
  */
-const v_debounce = function (fn, delay, ctx, arg) {
+const v_debounce = function (fn, delay = 100, ctx, ...args) {
   if (timer) {
     return
   }
-  fn.call(ctx, arg)
+  fn.apply(ctx, args)
   timer = setTimeout(() => {
     timer = null
   }, delay)
