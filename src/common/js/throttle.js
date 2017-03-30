@@ -17,7 +17,6 @@ var throttle = function (fn, delay, immediate, debounce) {
       exec = function () {
         last_exec = curr;
         fn.apply(context, args);
-        console.log(1)
       };
   return function () {
     curr= +new Date();
@@ -54,11 +53,31 @@ var debounce = function (fn, delay, immediate) {
 };
 
 
-// 我的
-let timer
-const v_throttle = function (fn, delay, context) {
-  timer && clearTimeout(timer)
-  timer = setTimeout(() => fn(), delay)
+
+let timer = null
+
+// 简单的截断
+const v_throttle = function (fn, ctx, arg) {
+  clearTimeout(timer)
+  timer = setTimeout(() => fn.call(ctx, arg), 100)
 }
 
-export default debounce;
+/**
+ * 连续调用时 每间隔 delay 毫秒 调用一次
+ * @param fn 被调用的函数
+ * @param delay 间隔时间
+ * @param ctx 上下文
+ * @param arg 参数
+ */
+const v_debounce = function (fn, delay, ctx, arg) {
+  if (timer) {
+    return
+  }
+  fn.call(ctx, arg)
+  timer = setTimeout(() => {
+    timer = null
+  }, delay)
+}
+
+
+export default v_debounce;
