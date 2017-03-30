@@ -20,14 +20,13 @@
 <script type="javascript">
   import Loading from './Loading.vue'
   import router from '../router'
+  import throttle from '../common/js/throttle'
 
   export default {
     components: {Loading},
     props: ['diarys'],
     data() {
-      return {
-
-      }
+      return {}
     },
     watch: {
       diarys(){
@@ -46,14 +45,19 @@
                 y = e.pageY - e.currentTarget.offsetTop,
                 w = e.currentTarget.clientWidth / 2,
                 h = e.currentTarget.clientHeight / 2,
+                yy, xx, ex, ey, rl, deg
 
-                yy = x <= w ? -(1 - x / w) : (x - w) / w,
-                xx = y <= h ? 1 - y / h : -(y - h) / h,
+        const roll = function () {
+          yy = x <= w ? -(1 - x / w) : (x - w) / w,
+          xx = y <= h ? 1 - y / h : -(y - h) / h,
 
-                ex = w - Math.abs(x - w),
-                ey = h - Math.abs(y - h),
-                rl = ex > ey ? 1 - ey / h : 1 - ex / w,
-                deg = rl * 14
+          ex = w - Math.abs(x - w),
+          ey = h - Math.abs(y - h),
+          rl = ex > ey ? 1 - ey / h : 1 - ex / w,
+          deg = rl * 14
+        }
+
+        throttle(roll, 2000, false)()
 
         e.currentTarget.style.webkitTransform = 'perspective(1500px) rotate3d( ' + xx + ', ' + yy + ', 0, ' + deg + 'deg)'
         e.currentTarget.style.transform = 'perspective(1500px) rotate3d( ' + xx + ', ' + yy + ', 0, ' + deg + 'deg)'
