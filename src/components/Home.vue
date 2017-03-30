@@ -57,7 +57,7 @@
           deg = rl * 14
         }
 
-        throttle(roll, 2000, false)()
+        roll()
 
         e.currentTarget.style.webkitTransform = 'perspective(1500px) rotate3d( ' + xx + ', ' + yy + ', 0, ' + deg + 'deg)'
         e.currentTarget.style.transform = 'perspective(1500px) rotate3d( ' + xx + ', ' + yy + ', 0, ' + deg + 'deg)'

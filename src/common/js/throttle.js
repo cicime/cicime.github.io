@@ -53,4 +53,12 @@ var debounce = function (fn, delay, immediate) {
   return throttle(fn, delay, immediate, true);
 };
 
-export default throttle;
+
+// 我的
+let timer
+const v_throttle = function (fn, delay, context) {
+  timer && clearTimeout(timer)
+  timer = setTimeout(() => fn(), delay)
+}
+
+export default debounce;
