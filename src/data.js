@@ -45,6 +45,17 @@ module.exports = {
       outline: `
         做一些简单的数学运算
       `
+    },
+    {
+      title: '读书像做梦一样',
+      id: 'rc170420',
+      cate: '日常',
+      time: '2017-4-20',
+      img: 'static/img/data/420.jpg',
+      url: 'static/path/rc170420.md',
+      outline: `
+        封面是《人类简史》的作者 —— 尤瓦尔·赫拉利， 一位以色列的历史学家
+      `
     }
   ]
 }

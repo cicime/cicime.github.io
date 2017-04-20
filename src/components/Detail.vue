@@ -15,7 +15,11 @@
     created(){
       window.scrollTo(0, 0)
       this.$http.get('./static/path/' + this.$router.currentRoute.params.id + '.md').then(response => {
-        this.renderHtml(response.body)
+        let data = response.body
+        if(/---[\r\n](.*[\r\n])+---/.test(response.body)) {
+          data = data.replace(/---[\r\n](.*[\r\n])+---/, '')
+        }
+        this.renderHtml(data)
       }, err => {
         router.replace('/404')
       })
