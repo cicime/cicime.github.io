@@ -1,8 +1,6 @@
 var fs = require('fs');
 var path = require('path');
 
-// module.exports = fs.writeFileSync('./static/diary.json', JSON.stringify(data));
-
 
 const sendData = (data, filename) => {
   var info = {}
