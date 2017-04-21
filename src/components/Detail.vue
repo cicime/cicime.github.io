@@ -14,7 +14,7 @@
     components: { Loading },
     created(){
       window.scrollTo(0, 0)
-      this.$http.get('./static/path/' + this.$router.currentRoute.params.id + '.md').then(response => {
+      this.$http.get('https://raw.githubusercontent.com/cicime/cicime.github.io/master/i/static/path/' + this.$router.currentRoute.params.id + '.md').then(response => {
         let data = response.body
         if(/---[\r\n](.*[\r\n])+---/.test(response.body)) {
           data = data.replace(/---[\r\n](.*[\r\n])+---/, '')

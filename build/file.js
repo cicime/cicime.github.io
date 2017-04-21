@@ -8,7 +8,8 @@ var data = require('../src/data')
 const sendData = (data, filename) => {
   var info = {}
   info.id = filename.replace(/(^.*\\)|(\.md)/g,'')
-  info.url = 'static/path/' + info.id + '.md'
+  info.url = 'path/' + info.id + '.md'
+  info.data = data
 
   if(/---[\r\n](.*[\r\n])+---/.test(data)) {
     let ctx = data.match(/---[\r\n](.*[\r\n])+---/)[0].match(/.*\r\n/g)
