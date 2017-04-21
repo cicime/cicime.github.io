@@ -14,7 +14,11 @@
     components: { Loading },
     created(){
       window.scrollTo(0, 0)
-      this.$http.get('https://raw.githubusercontent.com/cicime/cicime.github.io/master/i/static/path/' + this.$router.currentRoute.params.id + '.md').then(response => {
+      let url = 'https://raw.githubusercontent.com/cicime/cicime.github.io/master/i/static/path/'
+      if(process.env.NODE_ENV === "development") {
+        url = './static/path/'
+      }
+      this.$http.get(url + this.$router.currentRoute.params.id + '.md').then(response => {
         let data = response.body
         if(/---[\r\n](.*[\r\n])+---/.test(response.body)) {
           data = data.replace(/---[\r\n](.*[\r\n])+---/, '')
