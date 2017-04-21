@@ -56,7 +56,7 @@ async function init() {
     data.content.push(await readfile(file))
   }
 
-  module.exports = fs.writeFileSync('./static/diary.json', JSON.stringify(data));
+  fs.writeFileSync('./static/diary.json', JSON.stringify(data));
 }
 
 init();
