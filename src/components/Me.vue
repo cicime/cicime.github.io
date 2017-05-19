@@ -9,6 +9,7 @@
         <li class="about-head-list-i">职业：FE</li>
         <li class="about-head-list-i">E-mail：toma_zhao@163.com</li>
         <li class="about-head-list-i">其他信息：27岁 ♂ 北京 天盖星人</li>
+        <li class="about-head-list-i">Git仓库：<a href="https://github.com/cicime">GitHub</a> - <a href="http://git.oschina.net/cicime">oschina</a></li>
       </ul>
     </div>
     <div class="ability">
@@ -61,7 +62,7 @@
     &-list
       display inline-block
       vertical-align top
-      margin-top: 54px
+      margin-top: 34px
       &-i
         line-height: 2.4
 
