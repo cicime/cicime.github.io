@@ -17,11 +17,11 @@ tags:
 
 如何用 `useEffect` 模拟 `componentDidMount` 生命周期？
 
-虽然可以使用useEffect(fn, [])，但它们并不完全相等。
-和componentDidMount不一样，useEffect会捕获 props和state。
+虽然可以使用`useEffect(fn, [])`，但它们并不完全相等。
+和`componentDidMount`不一样，`useEffect`会捕获 props和state。
 所以即便在回调函数里，你拿到的还是初始的props和state。
 
-如何正确地在useEffect里请求数据？[]又是什么？
+如何正确地在`useEffect`里请求数据？[]又是什么？
 
 [] 表示effect没有使用任何React数据流里的值，因此该effect仅被调用一次是安全的。[] 同样也是一类常见问题的来源，也即你以为没使用数据流里的值但其实使用了。你需要学习一些策略（主要是useReducer 和 useCallback）来移除这些effect依赖，而不是错误地忽略它们。
 
@@ -329,9 +329,47 @@ function Article({ id }) {
 ```
 
 
-## 其他
+## 实践
 
-相关文档
+如何实现一个 useTimeout
+
+```javascript
+// 自定义 hook
+const useTimeout = (callback, delay) => {
+  const savedCallback = React.useRef();
+
+  React.useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  React.useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+    if (delay !== null) {
+      let id = setTimeout(tick, delay);
+      return () => clearTimeout(id);
+    }
+  }, [delay]);
+};
+
+// 使用样例
+const OneSecondTimer = props => {
+  const [seconds, setSeconds] = React.useState(0);
+  useTimeout(() => {
+    setSeconds(seconds + 1);
+  }, 1000);
+
+  return <p>{seconds}</p>;
+};
+
+ReactDOM.render(<OneSecondTimer />, document.getElementById('root'));
+```
+
+
+## 相关文档
+
+各种指南
 
 - [如何更好的处理错误和加载状态](https://www.robinwieruch.de/react-hooks-fetch-data)
 - [如何避免回调函数](https://reactjs.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down)
