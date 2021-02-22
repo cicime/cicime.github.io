@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "UseEffect 使用指南"
+title: 总结 <code>UseEffect</code> 使用指南
 subtitle: "A Guide to useeffect"
 author: "Toma"
 header-style: text
