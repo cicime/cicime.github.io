@@ -331,7 +331,7 @@ function Article({ id }) {
 
 ## 实践
 
-如何实现一个 useTimeout
+实现一个 useTimeout
 
 ```javascript
 // 自定义 hook
@@ -364,6 +364,44 @@ const OneSecondTimer = props => {
 };
 
 ReactDOM.render(<OneSecondTimer />, document.getElementById('root'));
+```
+
+实现一个 useFetch
+
+```javascript
+const useFetch = (url, options) => {
+  const [response, setResponse] = React.useState(null);
+  const [error, setError] = React.useState(null);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(url, options);
+        const json = await res.json();
+        setResponse(json);
+      } catch (error) {
+        setError(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  return { response, error };
+};
+
+// 使用
+const ImageFetch = props => {
+  const res = useFetch('https://dog.ceo/api/breeds/image/random', {});
+  if (!res.response) {
+    return <div>Loading...</div>;
+  }
+  const imageUrl = res.response.message;
+  return (
+    <div>
+      <img src={imageUrl} alt="avatar" width={400} height="auto" />
+    </div>
+  );
+};
 ```
 
 
