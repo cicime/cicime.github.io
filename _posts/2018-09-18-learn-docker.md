@@ -4,7 +4,7 @@ title: 学习 Docker 笔记
 subtitle: "Learn Docker"
 author: "Toma"
 header-style: text
-hidden: true
+hidden: false
 tags:
   - 笔记
   - web
@@ -12,6 +12,7 @@ tags:
 ---
 
 > Docker 相关
+> [Docker 官网](https://docs.docker.com/get-started/)
 
 
 ## 常用命令
@@ -55,13 +56,6 @@ yum install docker-ce
 # 启动并加入开机启动
 sudo systemctl start docker
 sudo systemctl enable docker
-
-# 安装docker-compose
-# 1 安装epel源
-yum install -y epel-release
-
-# 2 安装docker-compose
-yum install -y docker-compose 
 ```
 
 测试
@@ -85,7 +79,12 @@ docker run --name nginx-test -p 8080:80 -d nginx
 - -d nginx： 设置容器在在后台一直运行
 
 
-## 注意
+## doker-compose
 
-🙃 努力中...
+> 安装教程 [官网](https://docs.docker.com/compose/install/)
+
+
+## 注意 🙃 
+
+
 
