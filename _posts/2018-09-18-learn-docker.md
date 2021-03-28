@@ -94,9 +94,11 @@ docker exec -it centos:latest bash
 exit
 ```
 
-## DockerFile
+## Dockerfile
 
-```
+创建 `Dockerfile` 文件
+
+```sh
 FROM node:8.10.0-alpine
 
 # Set a working directory
@@ -115,6 +117,24 @@ COPY ./build .
 USER node
 
 CMD [ "node", "server.js" ]
+```
+
+在 `Dockerfile` 文件同级目录下，使用 `docker build` 命令进行构建：
+
+```sh
+# 构件
+docker build -t mine .
+
+# 运行
+docker run --name mine -p 80:8080 -d mine
+
+# 替换文件
+docker cp index.ejs mine:/usr/src/app/views/
+
+# 查看
+# docker exec -it mine bash
+
+docker commit -m ':art:' -a 'author' 容器id 镜像id:tag
 ```
 
 
