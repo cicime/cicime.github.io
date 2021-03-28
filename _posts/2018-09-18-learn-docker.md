@@ -29,6 +29,8 @@ tags:
 
 `docker build -t 标签名称 目录`，构建Docker镜像，-t表示指定一个标签。docker tag 为镜像打标签。更多的命令可以使用docker --help 查看，如果想查询docker run命令的用法，可以使用docker run --help进行查看。
 
+`docker logs 容器ID或容器名` 查看日志  
+
 
 ## 安装
 
@@ -79,12 +81,50 @@ docker run --name nginx-test -p 8080:80 -d nginx
 - -d nginx： 设置容器在在后台一直运行
 
 
+## 简单示例 `BASH`
+
+```sh
+# 启动一个 Bash
+docker run -it centos:latest bash
+
+# 进入一个启动的容器 并且开启一个交互模式的终端
+docker exec -it centos:latest bash
+
+# 退出
+exit
+```
+
+## DockerFile
+
+```
+FROM node:8.10.0-alpine
+
+# Set a working directory
+WORKDIR /usr/src/app
+
+COPY ./build/package.json .
+COPY ./build/yarn.lock .
+
+# Install Node.js dependencies
+RUN yarn install --production --no-progress
+
+# Copy application files
+COPY ./build .
+
+# Run the container under "node" user by default
+USER node
+
+CMD [ "node", "server.js" ]
+```
+
+
+
 ## doker-compose
 
 > 安装教程 [官网](https://docs.docker.com/compose/install/)
 
+```sh
+# 运行 一个 docker-compose.yml
+docker-compose up -d
 
-## 注意 🙃 
-
-
-
+```
