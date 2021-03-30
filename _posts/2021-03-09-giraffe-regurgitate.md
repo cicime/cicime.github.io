@@ -3,7 +3,7 @@ layout:     post
 title:      "长颈鹿是如何反刍的"
 subtitle:   "How does a giraffe regurgitate"
 author:     "赵泠"
-header-img: "/img/giraffe.jpeg"
+header-img: "img/giraffe.jpeg"
 header-mask: 0.3
 catalog:    true
 tags:
