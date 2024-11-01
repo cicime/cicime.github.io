@@ -8,6 +8,7 @@ header-mask: 0.3
 catalog:    true
 tags:
     - 知乎
+    - 奇怪的知识
 ---
 
 
